@@ -1,0 +1,37 @@
+version: "3"
+services:
+  laravel:
+    image: vivifyideas/php-fpm-production-docker-alpine
+    working_dir: /app
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app
+
+  web:
+    image: nginx:alpine
+    depends_on:
+      - laravel
+    command: sh /entrypoint-web.sh
+    ports:
+      - 8000:80
+    volumes:
+      - ./src:/app
+      - ./docker/entrypoint-web.sh:/entrypoint-web.sh
+      - ./docker/default.conf:/etc/nginx/conf.d/default.conf
+
+  db:
+    image: mariadb:10
+    environment:
+      MYSQL_DATABASE: url
+      MYSQL_USER: url
+      MYSQL_PASSWORD: url
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+
