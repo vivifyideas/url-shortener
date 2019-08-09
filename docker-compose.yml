@@ -14,7 +14,7 @@ services:
       - laravel
     command: sh /entrypoint-web.sh
     ports:
-      - 8000:80
+      - 80:80
     volumes:
       - ./src:/app
       - ./docker/entrypoint-web.sh:/entrypoint-web.sh
