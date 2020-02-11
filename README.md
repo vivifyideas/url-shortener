@@ -2,6 +2,17 @@
 
 ## Getting started
 
+There are 2 ways to setup projects, you can do in a way you prefer.
+
+## Option 1 - Using Docker
+
+**You need to have docker and docker-compose for this to work**
+
+We've written bash script that will do all things that you would normally have to do manually.
+In order to run script all you have to do is run chmod +x init && chmod +x pre-commit && ./init
+
+
+## Option 2
 
 1. Clone this repository
 
